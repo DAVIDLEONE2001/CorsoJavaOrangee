@@ -1,44 +1,53 @@
-package pippo2;
+package pippo3;
 
 public abstract class acquista {
-private int quantitaSpesa;
-   abstract public String servizioAttivo();
-   abstract public void compra(prodotto prodotto, int qnt);
+    private prodotto acquisto;
+    private int qunatita;
+    private double spesa;
+    static private int scontoServizio;
+    private int maggiorazioneServizio;
+    private double spesaScontata;
 
-    public double acquista(){
-        double spesaTot=prodotto.getSpesaTot();
-        if (this.servizioAttivo()=="consegna") if (spesaTot < 50) {
-            spesaTot = spesaTot + (spesaTot / 100) * 3;
-        } else if (spesaTot > 99) spesaTot = spesaTot - (spesaTot / 100) * 3;
+    public acquista(prodotto acquisto, int qunatita) {
+        this.acquisto = acquisto;
+        this.qunatita = qunatita;
+        this.spesa = this.qunatita * acquisto.getPrezzo();
 
-if (this.servizioAttivo()=="onLine"){
-    spesaTot=spesaTot-(spesaTot/100)*3;}
-
-
-        return spesaTot;
     }
 
+    public abstract String servizio();
 
-    public void calcolaPrezzo() {
-        double prezzoUnitario=prodotto.getPrezzo()*this.quantitaSpesa;if (prodotto.getPercentualeSconto()!=0){
-            if(prodotto.isSconto() == true) prezzoUnitario= prezzoUnitario-(prezzoUnitario/100)*5;}
-        if(prodotto.tipo=="pane"||prodotto.tipo=="Pane") prezzoUnitario= prezzoUnitario-(prezzoUnitario/100)*50;
-        //  System.out.println("il prezzo di "+this.tipo+" tipo "+this.nome+ " di quantita "+this.quantita+" e "+prezzoUnitario +" e costa "+this.prezzo+" al pezzo");
-        prodotto.setSpesaTot(prodotto.getSpesaTot() +prezzoUnitario);
 
-    } String servizio=this.servizioAttivo();
-    public void StampaT(){
-
-        System.out.println("il totale dei servizi scontati ("+ this.servizioAttivo()+ ") e "+prodotto.getSpesaTot());
-    }
-    public int getQuantitaSpesa() {
-        return quantitaSpesa;
+    public int getScontoServizio() {
+        return scontoServizio;
     }
 
-    public void setQuantitaSpesa(int quantitaSpesa) {
-        this.quantitaSpesa = quantitaSpesa;
+    public void setScontoServizio(int scontoServizio) {
+        this.scontoServizio = scontoServizio;
+    }
+
+    public double getSpesa() {
+        return this.spesa;
+    }
+
+    public int getMaggiorazioneServizio() {
+        return maggiorazioneServizio;
+    }
+
+    public void setMaggiorazioneServizio(int maggiorazioneServizio) {
+        this.maggiorazioneServizio = maggiorazioneServizio;
+    }
+
+    public void calcolaAcquisti() {
+        spesaScontata = spesa;
+        if (scontoServizio != 0)
+            spesaScontata = spesa - (spesa / 100) * scontoServizio;
+        else if (maggiorazioneServizio != 0)
+            spesaScontata = spesaScontata + (spesa / 100) * maggiorazioneServizio;
+        else if (acquisto.scontoProdotto() != 0)
+            spesaScontata = spesaScontata - (spesa / 100) * acquisto.scontoProdotto();
+        System.out.println(spesaScontata);
+        if (scontoServizio == 0 && maggiorazioneServizio == 0 && acquisto.scontoProdotto() == 0)
+            System.out.println(spesa);
     }
 }
-
-
-

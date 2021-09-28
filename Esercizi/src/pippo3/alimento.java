@@ -1,23 +1,12 @@
-package pippo2;
+package pippo3;
 
 public class alimento extends prodotto{
-    public alimento(String tipo,String nome, float prezzo) {
-        super.tipo= tipo;
-        super.prezzo=prezzo;
-
-        super.nome=nome;
-        super.setPercentualeSconto(5);
-
+    public alimento(String tipo, String nome, double prezzo) {
+        super(tipo, nome, prezzo);
     }
-
-
-
-
 
     @Override
-    void sconto() {
-        this.setSconto(false);
+    int scontoProdotto() {
+        return 5;
     }
-
-
 }

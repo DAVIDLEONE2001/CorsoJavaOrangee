@@ -1,20 +1,13 @@
 package pippo3;
 
-public class onLine extends acquista {
-
-    @Override
-    public String servizioAttivo() {
-        String onLine="onLine";
-        return onLine;
+public class onLine extends acquista{
+    public onLine(prodotto acquisto, int qunatita) {
+        super(acquisto, qunatita);
     }
 
     @Override
-    public void compra(prodotto prodotto, int qnt) {
-        super.setQuantitaSpesa(qnt);
-
-        double spesa=prodotto.prezzo*qnt;
-        System.out.println("il prezzo di "+prodotto.tipo+" tipo "+prodotto.nome+ " di quantita "+qnt+" e "+spesa +" e costa "+prodotto.prezzo+" al pezzo");
-
+    public String servizio() {
+        super.setScontoServizio(2);
+        return "onLine";
     }
-
 }

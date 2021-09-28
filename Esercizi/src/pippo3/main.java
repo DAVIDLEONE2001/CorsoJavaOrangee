@@ -1,21 +1,14 @@
-package pippo2;
+package pippo3;
+
+
+
 
 public class main {
     public static void main(String[] args) {
 
-        prodotto segale= new alimento("pane","segale",3);
-        prodotto regina= new noAlimento("scottex","regina",0.3);
-        acquista primo=new consegna();
-        segale.calcolaPrezzo();
-        regina.calcolaPrezzo();
-        prodotto.stampaTot();
+        prodotto segale=new alimento("pane","segale",1);
+        acquista mario =new consegna(segale,1000);
+        mario.calcolaAcquisti();
+        System.out.println(segale.getPrezzo());
 
-        acquista mario =new onLine();
-        mario.compra(segale,5);mario.StampaT();
-        mario.calcolaPrezzo();
-
-
-
-
-    }
-}
+    }}

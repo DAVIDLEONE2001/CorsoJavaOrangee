@@ -1,24 +1,12 @@
 package pippo3;
 
-public class noAlimento extends prodotto {
-
-
-    public noAlimento(String tipo,String nome, double prezzo) {
-        super.tipo= tipo;
-        super.prezzo=prezzo;
-
-        super.nome=nome;
-        super.setPercentualeSconto(0);
+public class noAlimento extends prodotto{
+    public noAlimento(String tipo, String nome, double prezzo) {
+        super(tipo, nome, prezzo);
     }
 
-
-
-;
-
-
-
     @Override
-    void sconto() {
-        this.setSconto(false);
+    int scontoProdotto() {
+        return 0;
     }
 }

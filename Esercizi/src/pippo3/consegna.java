@@ -1,18 +1,20 @@
-package pippo2;
-
-public class consegna extends acquista {
 
 
-    @Override
-    public String servizioAttivo() {
-        String consegna="consegna";
-        return consegna;
+package pippo3;
+import pippo3.acquista;
+
+
+
+public class consegna extends acquista{
+    public consegna(prodotto acquisto, int qunatita) {
+        super(acquisto, qunatita);
     }
 
     @Override
-    public void compra(prodotto prodotto, int qnt) {
-        double spesa=prodotto.prezzo*qnt;
-        System.out.println("il prezzo di "+prodotto.tipo+" tipo "+prodotto.nome+ " di quantita "+qnt+" e "+spesa +" e costa "+prodotto.prezzo+" al pezzo");
-
+    public String servizio() {
+        if(super.getSpesa()<50)super.setMaggiorazioneServizio(2);
+        if(super.getSpesa()>99)super.setScontoServizio(3);
+        //else super.setScontoServizio(0);
+        return "consegna";
     }
 }
